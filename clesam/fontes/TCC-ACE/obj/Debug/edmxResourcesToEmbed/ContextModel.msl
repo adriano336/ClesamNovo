@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ContextModelStoreContainer" CdmEntityContainer="ContextEntities">
+    <EntitySetMapping Name="Grupo">
+      <EntityTypeMapping TypeName="ContextModel.Grupo">
+        <MappingFragment StoreEntitySet="Grupo">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recurso">
+      <EntityTypeMapping TypeName="ContextModel.Recurso">
+        <MappingFragment StoreEntitySet="Recurso">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="href" ColumnName="href" />
+          <ScalarProperty Name="src" ColumnName="src" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="tipoRecurso_codigo" ColumnName="tipoRecurso_codigo" />
+          <ScalarProperty Name="recursoPai_codigo" ColumnName="recursoPai_codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoRecurso">
+      <EntityTypeMapping TypeName="ContextModel.TipoRecurso">
+        <MappingFragment StoreEntitySet="TipoRecurso">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="ordem" ColumnName="ordem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="ContextModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="GrupoRecurso_codigo" ColumnName="GrupoRecurso_codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GrupoRecurso" TypeName="ContextModel.GrupoRecurso" StoreEntitySet="GrupoRecurso">
+      <EndProperty Name="Grupo">
+        <ScalarProperty Name="codigo" ColumnName="Grupo_codigo" />
+      </EndProperty>
+      <EndProperty Name="Recurso">
+        <ScalarProperty Name="codigo" ColumnName="Recurso_codigo" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Paciente">
+      <EntityTypeMapping TypeName="ContextModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UnidadeFederativa" ColumnName="UnidadeFederativa" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+          <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
+          <ScalarProperty Name="VinculoPrevidenciario" ColumnName="VinculoPrevidenciario" />
+          <ScalarProperty Name="NomePai" ColumnName="NomePai" />
+          <ScalarProperty Name="NomeMae" ColumnName="NomeMae" />
+          <ScalarProperty Name="NomeResponsavel" ColumnName="NomeResponsavel" />
+          <ScalarProperty Name="PacientePrecisaResponsavel" ColumnName="PacientePrecisaResponsavel" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="Altura" ColumnName="Altura" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Profissao" ColumnName="Profissao" />
+          <ScalarProperty Name="Escolaridade" ColumnName="Escolaridade" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="TelefoneComercial" ColumnName="TelefoneComercial" />
+          <ScalarProperty Name="TelefoneCelular" ColumnName="TelefoneCelular" />
+          <ScalarProperty Name="TelefoneResidencia" ColumnName="TelefoneResidencia" />
+          <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+          <ScalarProperty Name="NumeroLogradouro" ColumnName="NumeroLogradouro" />
+          <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Prontuario" ColumnName="Prontuario" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

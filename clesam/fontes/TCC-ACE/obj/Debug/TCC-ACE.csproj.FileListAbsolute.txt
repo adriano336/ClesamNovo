@@ -1,0 +1,60 @@
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\obj\Debug\TCC-ACE.csprojResolveAssemblyReference.cache
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\TCC-ACE.dll.config
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\TCC-ACE.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\TCC-ACE.pdb
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\Antlr3.Runtime.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\Microsoft.Web.Infrastructure.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\Newtonsoft.Json.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.Helpers.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.Mvc.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.Optimization.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.Razor.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.WebPages.Deployment.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.WebPages.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.WebPages.Razor.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\WebGrease.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.Helpers.xml
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.Mvc.xml
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.Optimization.xml
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.Razor.xml
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.WebPages.xml
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.WebPages.Deployment.xml
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\System.Web.WebPages.Razor.xml
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\Newtonsoft.Json.xml
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\Antlr3.Runtime.pdb
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\obj\Debug\TCC-ACE.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\obj\Debug\TCC-ACE.pdb
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\EntityFramework.dll
+c:\users\samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\EntityFramework.xml
+C:\Users\Samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\PagedList.dll
+C:\Users\Samuel\documents\visual studio 2013\Projects\TCC-ACE\TCC-ACE\bin\PagedList.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\TCC-ACE.dll.config
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\TCC-ACE.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\TCC-ACE.pdb
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\Antlr3.Runtime.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\EntityFramework.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\Microsoft.Web.Infrastructure.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\Newtonsoft.Json.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\PagedList.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.Helpers.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.Mvc.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.Optimization.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.Razor.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.WebPages.Deployment.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.WebPages.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.WebPages.Razor.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\WebGrease.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\EntityFramework.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\PagedList.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.Helpers.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.Mvc.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.Optimization.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.Razor.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.WebPages.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.WebPages.Deployment.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\System.Web.WebPages.Razor.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\Newtonsoft.Json.xml
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\bin\Antlr3.Runtime.pdb
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\obj\Debug\TCC-ACE.dll
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\obj\Debug\TCC-ACE.pdb
+C:\Projeto\Clesam\Paciente20140601\clesam\fontes\TCC-ACE\obj\Debug\TCC-ACE.csprojResolveAssemblyReference.cache

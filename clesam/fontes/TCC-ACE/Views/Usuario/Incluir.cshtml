@@ -1,0 +1,72 @@
+﻿@model TCC_ACE.Models.ModelUsuario
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+        <div class="widget-box">
+            <div class="widget-header header-color-blue">
+                <div class="tituloPainel"><h4>Usuário</h4></div>
+                <div class="novoPainel"><h4><a href="\Usuario\">Voltar <i class="icon-arrow-right icon-on-right"></i></a></h4></div>
+            </div>
+            <div class="widget-body">
+                <div class="widget-main">
+                    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "FormEditar" }))
+                    {
+                        @ViewBag.mensagem
+                        @Html.ValidationSummary(true, "Verifique os dados do usuário.")
+                        @Html.ValidationMessageFor(u => u)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(u => u.titulo)
+                                    <div class="controls">
+                                        @Html.TextBoxFor(u => u.titulo, new { @class = "form-control", placeholder = "Email address" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(u => u.login)
+                                    <div class="controls">
+                                        @Html.TextBoxFor(u => u.login, new { @class = "form-control", placeholder = "Email address" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(u => u.senha)
+                                    <div class="controls">
+                                        @Html.PasswordFor(u => u.senha, new { @class = "form-control", placeholder = "Password" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(u => u.grupo.descricao)
+                                    <div class="controls">
+                                        @if (ViewData["grupos"] != null)
+                                        {
+                                            @Html.DropDownListFor(u => u.grupo.codigo, ((IEnumerable<SelectListItem>)ViewData["grupos"]), new { @class = "form-control" })
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button id="confirmar" name="confirmar" class="btn btn-success">Confirmar</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+</div>

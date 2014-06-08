@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Grupo">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ativo" Type="Boolean" />
+    <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK_GrupoRecursoUsuario" FromRole="Grupo" ToRole="Usuario" />
+    <NavigationProperty Name="Recurso" Relationship="Self.GrupoRecurso" FromRole="Grupo" ToRole="Recurso" />
+  </EntityType>
+  <EntityType Name="Recurso">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="href" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="src" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tipoRecurso_codigo" Type="Int32" Nullable="false" />
+    <Property Name="recursoPai_codigo" Type="Int32" />
+    <NavigationProperty Name="Recurso1" Relationship="Self.FK_RecursoRecurso" FromRole="Recurso" ToRole="Recurso1" />
+    <NavigationProperty Name="Recurso2" Relationship="Self.FK_RecursoRecurso" FromRole="Recurso1" ToRole="Recurso" />
+    <NavigationProperty Name="TipoRecurso" Relationship="Self.FK_TipoRecursoRecurso" FromRole="Recurso" ToRole="TipoRecurso" />
+    <NavigationProperty Name="Grupo" Relationship="Self.GrupoRecurso" FromRole="Recurso" ToRole="Grupo" />
+  </EntityType>
+  <EntityType Name="TipoRecurso">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ordem" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Recurso" Relationship="Self.FK_TipoRecursoRecurso" FromRole="TipoRecurso" ToRole="Recurso" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="senha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GrupoRecurso_codigo" Type="Int32" />
+    <NavigationProperty Name="Grupo" Relationship="Self.FK_GrupoRecursoUsuario" FromRole="Usuario" ToRole="Grupo" />
+  </EntityType>
+  <Association Name="FK_GrupoRecursoUsuario">
+    <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupo">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="GrupoRecurso_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RecursoRecurso">
+    <End Role="Recurso" Type="Self.Recurso" Multiplicity="0..1" />
+    <End Role="Recurso1" Type="Self.Recurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recurso">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Recurso1">
+        <PropertyRef Name="recursoPai_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoRecursoRecurso">
+    <End Role="TipoRecurso" Type="Self.TipoRecurso" Multiplicity="1" />
+    <End Role="Recurso" Type="Self.Recurso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoRecurso">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="Recurso">
+        <PropertyRef Name="tipoRecurso_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GrupoRecurso">
+    <End Role="Grupo" Type="Self.Grupo" Multiplicity="*" />
+    <End Role="Recurso" Type="Self.Recurso" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="ContextEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Grupo" EntityType="Self.Grupo" />
+    <EntitySet Name="Recurso" EntityType="Self.Recurso" />
+    <EntitySet Name="TipoRecurso" EntityType="Self.TipoRecurso" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK_GrupoRecursoUsuario" Association="Self.FK_GrupoRecursoUsuario">
+      <End Role="Grupo" EntitySet="Grupo" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RecursoRecurso" Association="Self.FK_RecursoRecurso">
+      <End Role="Recurso" EntitySet="Recurso" />
+      <End Role="Recurso1" EntitySet="Recurso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoRecursoRecurso" Association="Self.FK_TipoRecursoRecurso">
+      <End Role="TipoRecurso" EntitySet="TipoRecurso" />
+      <End Role="Recurso" EntitySet="Recurso" />
+    </AssociationSet>
+    <AssociationSet Name="GrupoRecurso" Association="Self.GrupoRecurso">
+      <End Role="Grupo" EntitySet="Grupo" />
+      <End Role="Recurso" EntitySet="Recurso" />
+    </AssociationSet>
+    <EntitySet Name="Paciente" EntityType="ContextModel.Paciente" />
+  </EntityContainer>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prontuario" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Logradouro" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="NumeroLogradouro" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Bairro" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="TelefoneResidencia" Type="Int32" Nullable="false" />
+    <Property Name="TelefoneCelular" Type="Int32" Nullable="false" />
+    <Property Name="TelefoneComercial" Type="Int32" />
+    <Property Name="EstadoCivil" Type="Int32" />
+    <Property Name="Escolaridade" Type="Int32" />
+    <Property Name="Profissao" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="Sexo" Type="Boolean" />
+    <Property Name="Altura" Type="Int32" />
+    <Property Name="Peso" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="PacientePrecisaResponsavel" Type="Boolean" />
+    <Property Name="NomeResponsavel" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="NomeMae" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="NomePai" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+    <Property Name="VinculoPrevidenciario" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Procedencia" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="CEP" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="Cidade" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="UnidadeFederativa" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+</Schema>

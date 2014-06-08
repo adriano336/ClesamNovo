@@ -1,0 +1,48 @@
+﻿@using PagedList;
+@{
+    IPagedList<Usuario> usuarios = ViewBag.usuarios;
+}
+
+ <div class="widget-box">
+    <div class="widget-header header-color-blue">
+        <div class="tituloPainel"><h4>Usuário</h4></div>
+        <div class="novoPainel" ><h4><a href="\Usuario\Incluir"><i class="icon-plus"></i> Novo</a></h4></div>
+    </div>
+    <div class="widget-body">
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>Título</th>
+                <th>Login</th>
+                <th>Grupo</th>
+                <th></th>
+            </tr>
+            @foreach (Usuario user in usuarios)
+            {
+                <tr>
+                    <td>@user.codigo</td>
+                    <td>@user.titulo</td>
+                    <td>@user.login</td>
+                    <td>@user.Grupo.descricao</td>
+                    <td>
+                        <button class="btn btn-xs btn-info btn-cmd">
+                            <a href="/Usuario/editar/@user.codigo"><i class="icon-edit bigger-120"></i></a>
+                        </button>
+                        <button class="btn btn-xs btn-danger btn-cmd">
+                            <a href="/Usuario/editar/@user.codigo"><i class="icon-trash bigger-120"></i></a>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="text-center">
+            <ul class="pagination">
+                @Html.Raw(@TCC_ACE.BaseLayout.Paginacao.getPaginacao(ViewBag.pagina, ViewBag.quantidadePag, "\\Usuario\\index\\"))
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ativo" Type="bit" />
+          <Property Name="descricao" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GrupoRecurso">
+          <Key>
+            <PropertyRef Name="Grupo_codigo" />
+            <PropertyRef Name="Recurso_codigo" />
+          </Key>
+          <Property Name="Grupo_codigo" Type="int" Nullable="false" />
+          <Property Name="Recurso_codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prontuario" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="nchar" MaxLength="60" Nullable="false" />
+          <Property Name="DataNascimento" Type="date" Nullable="false" />
+          <Property Name="Logradouro" Type="nchar" MaxLength="60" />
+          <Property Name="NumeroLogradouro" Type="nchar" MaxLength="10" />
+          <Property Name="Bairro" Type="nchar" MaxLength="20" />
+          <Property Name="TelefoneResidencia" Type="int" Nullable="false" />
+          <Property Name="TelefoneCelular" Type="int" Nullable="false" />
+          <Property Name="TelefoneComercial" Type="int" />
+          <Property Name="EstadoCivil" Type="int" />
+          <Property Name="Escolaridade" Type="int" />
+          <Property Name="Profissao" Type="nchar" MaxLength="60" />
+          <Property Name="Sexo" Type="bit" />
+          <Property Name="Altura" Type="int" />
+          <Property Name="Peso" Type="int" />
+          <Property Name="Email" Type="nchar" MaxLength="30" />
+          <Property Name="PacientePrecisaResponsavel" Type="bit" />
+          <Property Name="NomeResponsavel" Type="nchar" MaxLength="60" />
+          <Property Name="NomeMae" Type="nchar" MaxLength="60" />
+          <Property Name="NomePai" Type="nchar" MaxLength="60" />
+          <Property Name="VinculoPrevidenciario" Type="nchar" MaxLength="30" />
+          <Property Name="Procedencia" Type="nchar" MaxLength="30" />
+          <Property Name="CEP" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="Cidade" Type="nchar" MaxLength="20" />
+          <Property Name="UnidadeFederativa" Type="nchar" MaxLength="2" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Recurso">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="href" Type="nvarchar(max)" />
+          <Property Name="src" Type="nvarchar(max)" />
+          <Property Name="titulo" Type="nvarchar(max)" />
+          <Property Name="tipoRecurso_codigo" Type="int" Nullable="false" />
+          <Property Name="recursoPai_codigo" Type="int" />
+        </EntityType>
+        <EntityType Name="TipoRecurso">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="nvarchar(max)" />
+          <Property Name="ordem" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="senha" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GrupoRecurso_codigo" Type="int" />
+        </EntityType>
+        <Association Name="FK_GrupoRecurso_Grupo">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="1" />
+          <End Role="GrupoRecurso" Type="Self.GrupoRecurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="GrupoRecurso">
+              <PropertyRef Name="Grupo_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupoRecurso_Recurso">
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="1" />
+          <End Role="GrupoRecurso" Type="Self.GrupoRecurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="GrupoRecurso">
+              <PropertyRef Name="Recurso_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GrupoRecursoUsuario">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="GrupoRecurso_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecursoRecurso">
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="0..1" />
+          <End Role="Recurso1" Type="Self.Recurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Recurso1">
+              <PropertyRef Name="recursoPai_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoRecursoRecurso">
+          <End Role="TipoRecurso" Type="Self.TipoRecurso" Multiplicity="1" />
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoRecurso">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Recurso">
+              <PropertyRef Name="tipoRecurso_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContextModelStoreContainer">
+          <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GrupoRecurso" EntityType="Self.GrupoRecurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recurso" EntityType="Self.Recurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoRecurso" EntityType="Self.TipoRecurso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GrupoRecurso_Grupo" Association="Self.FK_GrupoRecurso_Grupo">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="GrupoRecurso" EntitySet="GrupoRecurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupoRecurso_Recurso" Association="Self.FK_GrupoRecurso_Recurso">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="GrupoRecurso" EntitySet="GrupoRecurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GrupoRecursoUsuario" Association="Self.FK_GrupoRecursoUsuario">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecursoRecurso" Association="Self.FK_RecursoRecurso">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="Recurso1" EntitySet="Recurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoRecursoRecurso" Association="Self.FK_TipoRecursoRecurso">
+            <End Role="TipoRecurso" EntitySet="TipoRecurso" />
+            <End Role="Recurso" EntitySet="Recurso" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Grupo">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ativo" Type="Boolean" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_GrupoRecursoUsuario" FromRole="Grupo" ToRole="Usuario" />
+          <NavigationProperty Name="Recurso" Relationship="Self.GrupoRecurso" FromRole="Grupo" ToRole="Recurso" />
+        </EntityType>
+        <EntityType Name="Recurso">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="href" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="src" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tipoRecurso_codigo" Type="Int32" Nullable="false" />
+          <Property Name="recursoPai_codigo" Type="Int32" />
+          <NavigationProperty Name="Recurso1" Relationship="Self.FK_RecursoRecurso" FromRole="Recurso" ToRole="Recurso1" />
+          <NavigationProperty Name="Recurso2" Relationship="Self.FK_RecursoRecurso" FromRole="Recurso1" ToRole="Recurso" />
+          <NavigationProperty Name="TipoRecurso" Relationship="Self.FK_TipoRecursoRecurso" FromRole="Recurso" ToRole="TipoRecurso" />
+          <NavigationProperty Name="Grupo" Relationship="Self.GrupoRecurso" FromRole="Recurso" ToRole="Grupo" />
+        </EntityType>
+        <EntityType Name="TipoRecurso">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ordem" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Recurso" Relationship="Self.FK_TipoRecursoRecurso" FromRole="TipoRecurso" ToRole="Recurso" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GrupoRecurso_codigo" Type="Int32" />
+          <NavigationProperty Name="Grupo" Relationship="Self.FK_GrupoRecursoUsuario" FromRole="Usuario" ToRole="Grupo" />
+        </EntityType>
+        <Association Name="FK_GrupoRecursoUsuario">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grupo">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="GrupoRecurso_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecursoRecurso">
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="0..1" />
+          <End Role="Recurso1" Type="Self.Recurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurso">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Recurso1">
+              <PropertyRef Name="recursoPai_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoRecursoRecurso">
+          <End Role="TipoRecurso" Type="Self.TipoRecurso" Multiplicity="1" />
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoRecurso">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="Recurso">
+              <PropertyRef Name="tipoRecurso_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GrupoRecurso">
+          <End Role="Grupo" Type="Self.Grupo" Multiplicity="*" />
+          <End Role="Recurso" Type="Self.Recurso" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ContextEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Grupo" EntityType="Self.Grupo" />
+          <EntitySet Name="Recurso" EntityType="Self.Recurso" />
+          <EntitySet Name="TipoRecurso" EntityType="Self.TipoRecurso" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_GrupoRecursoUsuario" Association="Self.FK_GrupoRecursoUsuario">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecursoRecurso" Association="Self.FK_RecursoRecurso">
+            <End Role="Recurso" EntitySet="Recurso" />
+            <End Role="Recurso1" EntitySet="Recurso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoRecursoRecurso" Association="Self.FK_TipoRecursoRecurso">
+            <End Role="TipoRecurso" EntitySet="TipoRecurso" />
+            <End Role="Recurso" EntitySet="Recurso" />
+          </AssociationSet>
+          <AssociationSet Name="GrupoRecurso" Association="Self.GrupoRecurso">
+            <End Role="Grupo" EntitySet="Grupo" />
+            <End Role="Recurso" EntitySet="Recurso" />
+          </AssociationSet>
+          <EntitySet Name="Paciente" EntityType="ContextModel.Paciente" />
+        </EntityContainer>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prontuario" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Logradouro" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="NumeroLogradouro" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Bairro" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="TelefoneResidencia" Type="Int32" Nullable="false" />
+          <Property Name="TelefoneCelular" Type="Int32" Nullable="false" />
+          <Property Name="TelefoneComercial" Type="Int32" />
+          <Property Name="EstadoCivil" Type="Int32" />
+          <Property Name="Escolaridade" Type="Int32" />
+          <Property Name="Profissao" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="Sexo" Type="Boolean" />
+          <Property Name="Altura" Type="Int32" />
+          <Property Name="Peso" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="PacientePrecisaResponsavel" Type="Boolean" />
+          <Property Name="NomeResponsavel" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="NomeMae" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="NomePai" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="VinculoPrevidenciario" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Procedencia" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="CEP" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="Cidade" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="UnidadeFederativa" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ContextModelStoreContainer" CdmEntityContainer="ContextEntities">
+          <EntitySetMapping Name="Grupo">
+            <EntityTypeMapping TypeName="ContextModel.Grupo">
+              <MappingFragment StoreEntitySet="Grupo">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="ativo" ColumnName="ativo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recurso">
+            <EntityTypeMapping TypeName="ContextModel.Recurso">
+              <MappingFragment StoreEntitySet="Recurso">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="href" ColumnName="href" />
+                <ScalarProperty Name="src" ColumnName="src" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="tipoRecurso_codigo" ColumnName="tipoRecurso_codigo" />
+                <ScalarProperty Name="recursoPai_codigo" ColumnName="recursoPai_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoRecurso">
+            <EntityTypeMapping TypeName="ContextModel.TipoRecurso">
+              <MappingFragment StoreEntitySet="TipoRecurso">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="ordem" ColumnName="ordem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="ContextModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="GrupoRecurso_codigo" ColumnName="GrupoRecurso_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="GrupoRecurso" TypeName="ContextModel.GrupoRecurso" StoreEntitySet="GrupoRecurso">
+            <EndProperty Name="Grupo">
+              <ScalarProperty Name="codigo" ColumnName="Grupo_codigo" />
+            </EndProperty>
+            <EndProperty Name="Recurso">
+              <ScalarProperty Name="codigo" ColumnName="Recurso_codigo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Paciente">
+            <EntityTypeMapping TypeName="ContextModel.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UnidadeFederativa" ColumnName="UnidadeFederativa" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
+                <ScalarProperty Name="VinculoPrevidenciario" ColumnName="VinculoPrevidenciario" />
+                <ScalarProperty Name="NomePai" ColumnName="NomePai" />
+                <ScalarProperty Name="NomeMae" ColumnName="NomeMae" />
+                <ScalarProperty Name="NomeResponsavel" ColumnName="NomeResponsavel" />
+                <ScalarProperty Name="PacientePrecisaResponsavel" ColumnName="PacientePrecisaResponsavel" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Altura" ColumnName="Altura" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Profissao" ColumnName="Profissao" />
+                <ScalarProperty Name="Escolaridade" ColumnName="Escolaridade" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="TelefoneComercial" ColumnName="TelefoneComercial" />
+                <ScalarProperty Name="TelefoneCelular" ColumnName="TelefoneCelular" />
+                <ScalarProperty Name="TelefoneResidencia" ColumnName="TelefoneResidencia" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="NumeroLogradouro" ColumnName="NumeroLogradouro" />
+                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Prontuario" ColumnName="Prontuario" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

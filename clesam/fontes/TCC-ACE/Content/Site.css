@@ -1,0 +1,17 @@
+﻿.novoPainel a{
+    color:#FFF;
+    text-decoration:none;
+}
+
+.novoPainel {
+    float: right;
+    margin-right: 10px;
+}
+.tituloPainel {
+    float: left;
+}
+
+.btn-cmd a {
+    color: #fff;
+    text-decoration: none;
+}
