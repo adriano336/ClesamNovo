@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Grupo">
           <Key>
             <PropertyRef Name="codigo" />
@@ -42,7 +42,7 @@
           <Property Name="Altura" Type="int" />
           <Property Name="Peso" Type="int" />
           <Property Name="Email" Type="nchar" MaxLength="30" />
-          <Property Name="PacientePrecisaResponsavel" Type="bit" />
+          <Property Name="PacientePrecisaResponsavel" Type="bit" Nullable="false" />
           <Property Name="NomeResponsavel" Type="nchar" MaxLength="60" />
           <Property Name="NomeMae" Type="nchar" MaxLength="60" />
           <Property Name="NomePai" Type="nchar" MaxLength="60" />
@@ -303,7 +303,7 @@
           <Property Name="Altura" Type="Int32" />
           <Property Name="Peso" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="PacientePrecisaResponsavel" Type="Boolean" />
+          <Property Name="PacientePrecisaResponsavel" Type="Boolean" Nullable="false" />
           <Property Name="NomeResponsavel" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
           <Property Name="NomeMae" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
           <Property Name="NomePai" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
